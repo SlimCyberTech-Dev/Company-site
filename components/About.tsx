@@ -72,15 +72,15 @@ export default function About() {
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-[var(--cyan)]">
             ABOUT US
           </p>
-          <h2 className="max-w-xl text-3xl leading-tight text-[var(--white)] sm:text-4xl">
+          <h2 className="max-w-[17ch] text-2xl leading-tight text-[var(--white)] sm:max-w-xl sm:text-4xl">
             We Are Engineers Who Think Like Strategists
           </h2>
-          <p className="mt-5 text-[15px] leading-8 text-[var(--muted)]">
+          <p className="mt-5 max-w-[40ch] text-sm leading-7 text-[var(--muted)] sm:max-w-none sm:text-[15px] sm:leading-8">
             At SlimCyberTech, our mission is to build technology that creates lasting impact.
             We help organizations transform complex ideas into resilient digital products that
             drive growth, efficiency, and competitive advantage.
           </p>
-          <p className="mt-4 text-[15px] leading-8 text-[var(--muted)]">
+          <p className="mt-4 max-w-[40ch] text-sm leading-7 text-[var(--muted)] sm:max-w-none sm:text-[15px] sm:leading-8">
             Our approach blends strong technical execution with strategic planning. From concept
             to deployment, we align every decision with business outcomes, ensuring every release
             is secure, scalable, and built for long-term value.
@@ -97,7 +97,7 @@ export default function About() {
 
           <Link
             href="#team"
-            className="mt-8 inline-flex rounded-full border border-[var(--cyan)]/65 px-6 py-2.5 text-sm font-semibold text-[var(--white)] transition-colors duration-300 hover:bg-[var(--surface2)]"
+            className="mt-8 inline-flex w-full justify-center rounded-full border border-[var(--cyan)]/65 px-6 py-2.5 text-sm font-semibold text-[var(--white)] transition-colors duration-300 hover:bg-[var(--surface2)] sm:w-auto sm:justify-start"
           >
             Meet The Team
           </Link>
@@ -112,7 +112,7 @@ export default function About() {
         >
           <div className="pointer-events-none absolute -inset-2 -z-10 rounded-3xl bg-[radial-gradient(circle_at_center,rgba(0,198,255,0.2),transparent_62%)] blur-2xl" />
           <div className="relative overflow-hidden rounded-2xl border border-[var(--border)] bg-[#0d0d0d] shadow-[0_0_0_1px_rgba(0,198,255,0.06),0_24px_60px_-32px_rgba(0,114,255,0.4)]">
-            <div className="relative h-[360px]">
+            <div className="relative h-[280px] sm:h-[320px] md:h-[360px]">
               <Image
                 src="/images/Gemini_Generated_Image_59g3zf59g3zf59g3.png"
                 alt="SlimCyberTech engineering workspace"
@@ -123,8 +123,10 @@ export default function About() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/35 to-transparent" />
             </div>
-            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between rounded-xl border border-[var(--border)] bg-black/70 px-4 py-3 backdrop-blur-sm">
-              <p className="text-xs uppercase tracking-[0.2em] text-[var(--muted)]">Secure by Design</p>
+            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between rounded-xl border border-[var(--border)] bg-black/70 px-3 py-2.5 backdrop-blur-sm sm:px-4 sm:py-3">
+              <p className="text-[10px] uppercase tracking-[0.16em] text-[var(--muted)] sm:text-xs sm:tracking-[0.2em]">
+                Secure by Design
+              </p>
               <Image
                 src="/images/Logo.jpeg"
                 alt="SlimCyberTech mark"
@@ -137,7 +139,7 @@ export default function About() {
         </motion.div>
       </div>
 
-      <div ref={statsRef} className="mt-10 grid grid-cols-2 gap-4 lg:grid-cols-4">
+      <div ref={statsRef} className="mt-8 grid grid-cols-1 gap-3 sm:mt-10 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
         {stats.map((stat, index) => (
           <StatItem
             key={stat.label}

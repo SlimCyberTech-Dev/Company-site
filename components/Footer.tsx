@@ -46,7 +46,7 @@ export default function Footer() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
+        <div className="grid grid-cols-2 gap-6 sm:gap-8 lg:grid-cols-3">
           <div>
             <h4 className="font-heading text-lg text-[var(--white)]">Quick Links</h4>
             <ul className="mt-4 space-y-2 text-sm text-[var(--muted)]">
@@ -73,11 +73,11 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div>
+          <div className="col-span-2 lg:col-span-1">
             <h4 className="font-heading text-lg text-[var(--white)]">Contact Info</h4>
             <ul className="mt-4 space-y-2 text-sm text-[var(--muted)]">
               <li>hello@slimcybertech.com</li>
-              <li>+256 700 123 456</li>
+              <li>+256 772 581510</li>
               <li>Kampala, Uganda</li>
             </ul>
 
@@ -98,7 +98,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 border-t border-[var(--border)] pt-5 text-xs text-[var(--muted)] sm:mt-10 sm:flex sm:items-center sm:justify-between">
+        <div className="mt-8 border-t border-[var(--border)] pt-5 text-center text-xs text-[var(--muted)] sm:mt-10 sm:flex sm:items-center sm:justify-between sm:text-left">
           <p>© 2025 SlimCyberTech. All Rights Reserved.</p>
           <p className="mt-2 sm:mt-0">Built with ❤️ and Code</p>
         </div>

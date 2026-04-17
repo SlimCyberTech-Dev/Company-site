@@ -153,7 +153,7 @@ export default function Testimonials() {
     <section
       id="testimonials"
       ref={sectionRef}
-      className="relative mt-12 overflow-hidden bg-[#0a0a0a] px-4 py-16 md:px-8 md:py-24"
+      className="relative mt-12 overflow-hidden bg-[#0a0a0a] px-4 py-14 md:px-8 md:py-24"
       style={{
         backgroundImage:
           "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0)",
@@ -164,7 +164,7 @@ export default function Testimonials() {
         <div className="absolute -right-36 top-1/2 h-[420px] w-[420px] -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(0,198,255,0.08)_0%,rgba(0,114,255,0.06)_45%,transparent_70%)] blur-3xl" />
       </div>
 
-      <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-8 md:flex-row md:items-stretch md:gap-10">
+      <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-7 md:flex-row md:items-stretch md:gap-10">
         <div className="relative w-full md:w-2/5">
           <p className="pointer-events-none absolute left-0 top-2 hidden select-none font-heading text-6xl font-bold tracking-[0.25em] text-white/[0.04] md:block">
             REVIEWS
@@ -181,17 +181,17 @@ export default function Testimonials() {
             <h2 className="mt-4 font-heading text-2xl leading-tight text-[var(--white)] md:text-4xl">
               Trusted By Those Who Build The Future
             </h2>
-            <p className="mt-4 max-w-md text-sm leading-7 text-[var(--muted)] md:text-base">
+            <p className="mx-auto mt-4 max-w-[34ch] text-sm leading-7 text-[var(--muted)] md:mx-0 md:max-w-md md:text-base">
               Feedback from founders and technology leaders who partner with SlimCyberTech to
               deliver secure, scalable digital products.
             </p>
 
-            <div className="mt-6 flex items-center justify-center gap-3 md:justify-start">
+            <div className="mt-5 flex items-center justify-center gap-3 md:justify-start">
               <button
                 type="button"
                 onClick={goPrev}
                 aria-label="Previous testimonial"
-                className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-[var(--cyan)]/70 bg-[#101010] text-[var(--white)] transition-all duration-300 hover:bg-[var(--gradient)]"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--cyan)]/70 bg-[#101010] text-[var(--white)] transition-all duration-300 hover:bg-[var(--gradient)] md:h-12 md:w-12"
               >
                 <ChevronLeft className="h-5 w-5" />
               </button>
@@ -199,13 +199,13 @@ export default function Testimonials() {
                 type="button"
                 onClick={goNext}
                 aria-label="Next testimonial"
-                className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-[var(--cyan)]/70 bg-[#101010] text-[var(--white)] transition-all duration-300 hover:bg-[var(--gradient)]"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--cyan)]/70 bg-[#101010] text-[var(--white)] transition-all duration-300 hover:bg-[var(--gradient)] md:h-12 md:w-12"
               >
                 <ChevronRight className="h-5 w-5" />
               </button>
             </div>
 
-            <div className="mt-6 text-sm font-semibold tracking-[0.16em] text-[var(--white)]/85">
+            <div className="mt-5 text-xs font-semibold tracking-[0.16em] text-[var(--white)]/85 md:mt-6 md:text-sm">
               {currentDisplay} / {totalDisplay}
             </div>
 
@@ -235,7 +235,7 @@ export default function Testimonials() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: direction > 0 ? -80 : 80 }}
               transition={{ duration: 0.45, ease: "easeOut" }}
-              className="relative overflow-hidden rounded-2xl border border-[#222] bg-[#111] p-6 md:p-8"
+              className="relative overflow-hidden rounded-2xl border border-[#222] bg-[#111] p-5 md:p-8"
             >
               <p className="pointer-events-none absolute left-4 top-2 font-heading text-8xl text-transparent opacity-30 [background:var(--gradient)] [background-clip:text] md:text-9xl">
                 &quot;
@@ -251,13 +251,13 @@ export default function Testimonials() {
                   ))}
                 </div>
 
-                <p className="mt-5 max-w-2xl text-base italic leading-8 text-[var(--white)] md:text-[1.1rem]">
+                <p className="mt-4 max-w-2xl text-[15px] italic leading-7 text-[var(--white)] md:mt-5 md:text-[1.1rem] md:leading-8">
                   {active.quote}
                 </p>
 
                 <div className="mt-6 h-px w-full bg-[linear-gradient(90deg,var(--cyan),var(--blue),transparent)]" />
 
-                <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
+                <div className="mt-5 flex flex-wrap items-center justify-between gap-2.5">
                   <div className="flex min-w-0 items-center gap-3">
                     <div
                       className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${active.color} ring-2 ring-cyan-400`}
@@ -265,7 +265,7 @@ export default function Testimonials() {
                       <span className="text-xs font-semibold text-white">{active.initials}</span>
                     </div>
                     <div className="min-w-0">
-                      <p className="truncate font-heading text-base font-semibold text-[var(--white)]">
+                      <p className="truncate font-heading text-sm font-semibold text-[var(--white)] md:text-base">
                         {active.name}
                       </p>
                       <p className="truncate text-xs text-[var(--muted)]">

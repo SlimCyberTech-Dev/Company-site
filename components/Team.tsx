@@ -54,9 +54,9 @@ export default function Team() {
       }
 
       // Native scroll-based marquee that still allows manual swipe/scroll.
-      track.scrollLeft += 0.55;
+      track.scrollLeft += 0.35;
       const maxScrollLeft = track.scrollWidth - track.clientWidth;
-      if (track.scrollLeft >= maxScrollLeft) {
+      if (maxScrollLeft > 0 && track.scrollLeft >= maxScrollLeft) {
         track.scrollLeft = 0;
       }
 
@@ -76,7 +76,7 @@ export default function Team() {
       transition={{ duration: 0.45, delay: index * 0.08 }}
       className="group relative overflow-hidden rounded-2xl border border-[var(--border)] bg-[#111] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--cyan)]/60 hover:shadow-[0_16px_38px_-26px_rgba(0,198,255,0.7)]"
     >
-      <div className="relative h-64 sm:h-72">
+      <div className="relative h-60 sm:h-72">
         <Image
           src={member.image}
           alt={member.alt}
@@ -88,8 +88,8 @@ export default function Team() {
       </div>
 
       <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
-        <p className="font-heading text-xl text-[var(--white)]">{member.name}</p>
-        <p className="mt-1 text-sm text-[var(--muted)]">{member.role}</p>
+        <p className="font-heading text-lg leading-tight text-[var(--white)] sm:text-xl">{member.name}</p>
+        <p className="mt-1 text-xs text-[var(--muted)] sm:text-sm">{member.role}</p>
         <div className="mt-3 flex flex-wrap gap-2">
           {member.specialties.map((specialty) => (
             <span
@@ -103,7 +103,7 @@ export default function Team() {
         <div className="mt-3">
           <Link
             href="#contact"
-            className="inline-flex items-center gap-2 text-sm font-medium text-[var(--cyan)] transition-colors duration-300 hover:text-[var(--white)]"
+            className="inline-flex items-center gap-2 text-xs font-medium text-[var(--cyan)] transition-colors duration-300 hover:text-[var(--white)] sm:text-sm"
             aria-label={`Contact ${member.name}`}
           >
             <BriefcaseBusiness className="h-4 w-4" />
@@ -119,12 +119,12 @@ export default function Team() {
     <section id="team" className="mx-auto mt-10 w-full max-w-6xl px-4 sm:px-6 md:px-10">
       <div className="text-center">
         <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--cyan)]">Team</p>
-        <h2 className="mt-3 text-3xl text-[var(--white)] sm:text-4xl">The People Behind The Build</h2>
+        <h2 className="mt-3 text-2xl text-[var(--white)] sm:text-4xl">The People Behind The Build</h2>
       </div>
 
       <div
         ref={trackRef}
-        className="relative mt-8 overflow-x-auto overflow-y-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="relative mt-7 overflow-x-auto overflow-y-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
         onTouchStart={() => setIsPaused(true)}
@@ -132,11 +132,11 @@ export default function Team() {
         onPointerDown={() => setIsPaused(true)}
         onPointerUp={() => setIsPaused(false)}
       >
-        <div className="flex w-max gap-5 pb-1">
+        <div className="flex w-max snap-x snap-mandatory gap-4 pb-1 sm:gap-5">
           {team.map((member, index) => (
             <div
               key={member.name}
-              className="w-[84vw] max-w-[300px] shrink-0 sm:w-[320px] lg:w-[340px]"
+              className="w-[86vw] max-w-[300px] shrink-0 snap-start sm:w-[320px] lg:w-[340px]"
             >
               {renderMemberCard(member, index, member.name)}
             </div>

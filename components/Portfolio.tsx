@@ -78,12 +78,12 @@ export default function Portfolio() {
   }, [activeFilter]);
 
   return (
-    <section id="portfolio" className="mx-auto mt-8 w-full max-w-6xl px-4 sm:px-6 md:px-10">
+    <section id="portfolio" className="mx-auto mt-10 w-full max-w-6xl px-4 sm:mt-8 sm:px-6 md:px-10">
       <div className="text-center">
         <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--cyan)]">
           Portfolio
         </p>
-        <h2 className="mt-3 text-3xl text-[var(--white)] sm:text-4xl">Our Work</h2>
+        <h2 className="mt-3 text-2xl text-[var(--white)] sm:text-4xl">Our Work</h2>
         <div className="mx-auto mt-4 flex items-center justify-center gap-3">
           <span className="h-px w-10 bg-[var(--cyan)]/50" />
           <span className="h-2 w-2 rounded-full bg-[var(--cyan)]" />
@@ -91,14 +91,14 @@ export default function Portfolio() {
         </div>
       </div>
 
-      <div className="mt-8 -mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
-        <div className="flex min-w-max items-center justify-start gap-2 pb-1 sm:min-w-0 sm:flex-wrap sm:justify-center">
+      <div className="mt-7 -mx-4 overflow-x-auto px-4 sm:mt-8 sm:mx-0 sm:px-0">
+        <div className="flex min-w-max snap-x snap-mandatory items-center justify-start gap-2 pb-1 sm:min-w-0 sm:flex-wrap sm:justify-center">
           {filters.map((filter) => (
             <button
               key={filter}
               type="button"
               onClick={() => setActiveFilter(filter)}
-              className={`whitespace-nowrap rounded-full border px-4 py-2 text-sm transition-all duration-300 ${
+              className={`snap-start whitespace-nowrap rounded-full border px-3.5 py-2 text-xs transition-all duration-300 sm:px-4 sm:text-sm ${
                 activeFilter === filter
                   ? "border-[var(--cyan)] bg-[var(--cyan)]/12 text-[var(--white)]"
                   : "border-[var(--border)] bg-[var(--surface)] text-[var(--muted)] hover:border-[var(--cyan)]/50 hover:text-[var(--white)]"
@@ -113,7 +113,7 @@ export default function Portfolio() {
       <LayoutGroup>
         <motion.div
           layout
-          className="mt-8 grid auto-rows-[210px] grid-cols-1 gap-4 sm:gap-5 md:auto-rows-[220px] md:grid-cols-2 lg:grid-cols-3"
+          className="mt-7 grid auto-rows-[230px] grid-cols-1 gap-4 sm:mt-8 sm:auto-rows-[210px] sm:gap-5 md:auto-rows-[220px] md:grid-cols-2 lg:grid-cols-3"
         >
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project) => (
@@ -136,12 +136,14 @@ export default function Portfolio() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-100" />
 
                 <div className="absolute inset-x-0 bottom-0 z-10 p-4 sm:p-5">
-                  <h3 className="font-heading text-lg text-[var(--white)] sm:text-xl">{project.name}</h3>
+                  <h3 className="font-heading text-[1.05rem] leading-snug text-[var(--white)] sm:text-xl">
+                    {project.name}
+                  </h3>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {project.stack.map((item) => (
                       <span
                         key={`${project.name}-${item}`}
-                        className="rounded-full border border-[var(--cyan)]/70 bg-[var(--bg)]/40 px-2.5 py-1 text-xs text-[var(--cyan)]"
+                        className="rounded-full border border-[var(--cyan)]/70 bg-[var(--bg)]/40 px-2 py-1 text-[11px] text-[var(--cyan)] sm:px-2.5 sm:text-xs"
                       >
                         {item}
                       </span>
