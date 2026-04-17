@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Orbitron } from "next/font/google";
 import ScrollProgress from "@/components/ScrollProgress";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
 const orbitron = Orbitron({
@@ -60,10 +61,20 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${orbitron.variable} ${inter.variable} h-full scroll-smooth antialiased`}
+      data-theme="dark"
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var s=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',(s==='light'||s==='dark')?s:d);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();`,
+          }}
+        />
+      </head>
       <body className="min-h-full bg-[var(--bg)] text-[var(--white)] font-sans">
-        <ScrollProgress />
-        {children}
+        <ThemeProvider>
+          <ScrollProgress />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

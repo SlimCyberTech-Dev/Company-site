@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { fadeUp, staggerContainer, staggerItem, VIEWPORT_ONCE } from "@/lib/motion";
+import { fadeUp, staggerItem, VIEWPORT_ONCE } from "@/lib/motion";
 import { useEffect, useRef, useState } from "react";
 import {
   AppWindowMac,

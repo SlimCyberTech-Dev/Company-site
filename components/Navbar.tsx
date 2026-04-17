@@ -3,9 +3,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, Moon, Sun, X } from "lucide-react";
 import { useState } from "react";
 import { useActiveSection } from "@/hooks/useActiveSection";
+import { useTheme } from "@/components/ThemeProvider";
 import { useScrollPosition } from "@/hooks/useScrollPosition";
 
 const navLinks = [
@@ -41,6 +42,7 @@ export default function Navbar() {
   const isScrolled = useScrollPosition(24);
   const [isOpen, setIsOpen] = useState(false);
   const activeSection = useActiveSection();
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <>
@@ -98,6 +100,14 @@ export default function Navbar() {
           </div>
 
           <div className="hidden items-center gap-3 md:flex">
+            <button
+              type="button"
+              aria-label="Toggle theme"
+              onClick={toggleTheme}
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface)] text-[var(--white)] transition-colors hover:border-[var(--cyan)]"
+            >
+              {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            </button>
             <span className="rounded-full border border-[var(--cyan)]/40 bg-[var(--cyan)]/10 px-3 py-1 text-[10px] uppercase tracking-[0.12em] text-[var(--cyan)]">
               {navLinks.find((item) => item.href.replace("#", "") === activeSection)?.label ?? "Home"}
             </span>
@@ -111,14 +121,24 @@ export default function Navbar() {
             </Link>
           </div>
 
-          <button
-            type="button"
-            aria-label={isOpen ? "Close menu" : "Open menu"}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface)] text-[var(--white)] md:hidden"
-            onClick={() => setIsOpen((prev) => !prev)}
-          >
-            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+          <div className="flex items-center gap-2 md:hidden">
+            <button
+              type="button"
+              aria-label="Toggle theme"
+              onClick={toggleTheme}
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface)] text-[var(--white)]"
+            >
+              {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            </button>
+            <button
+              type="button"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface)] text-[var(--white)]"
+              onClick={() => setIsOpen((prev) => !prev)}
+            >
+              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+          </div>
         </nav>
       </header>
 

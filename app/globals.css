@@ -12,6 +12,20 @@
   --white: #ffffff;
   --muted: #888888;
   --gradient: linear-gradient(135deg, #00c6ff, #0072ff);
+  --grid-line: rgba(255, 255, 255, 0.03);
+  --grain-dot: #ffffff;
+}
+
+:root[data-theme="light"] {
+  --bg: #f7f9fc;
+  --surface: #ffffff;
+  --surface2: #edf2f7;
+  --border: #dbe3ee;
+  --white: #0f172a;
+  --muted: #5b6472;
+  --gradient: linear-gradient(135deg, #00c6ff, #0072ff);
+  --grid-line: rgba(15, 23, 42, 0.05);
+  --grain-dot: #0f172a;
 }
 
 * {
@@ -20,6 +34,11 @@
 
 html {
   scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
 }
 
 body {
@@ -29,10 +48,13 @@ body {
   background-color: var(--bg);
   font-family: var(--font-body), sans-serif;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
   background-size: 48px 48px;
   overflow-x: hidden;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
 }
 
 body::before {
@@ -42,7 +64,7 @@ body::before {
   pointer-events: none;
   z-index: 50;
   opacity: 0.08;
-  background-image: radial-gradient(#ffffff 0.6px, transparent 0.6px);
+  background-image: radial-gradient(var(--grain-dot) 0.6px, transparent 0.6px);
   background-size: 3px 3px;
   animation: grainShift 8s steps(10) infinite;
 }
