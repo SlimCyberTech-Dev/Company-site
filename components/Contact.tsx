@@ -61,6 +61,7 @@ const budgets = [
 ];
 
 const requiredFields: FieldName[] = ["firstName", "lastName", "email", "subject", "message"];
+const submissionEmails = ["lemaaaron3@gmail.com", "fahadirashidawongo@gmail.com"];
 
 const fieldIcons: Record<FieldName, React.ComponentType<{ className?: string }>> = {
   firstName: User,
@@ -190,6 +191,21 @@ export default function Contact() {
 
     setIsSubmitting(true);
     setIsSuccess(false);
+
+    const emailSubject = `${formData.subject || "Website Inquiry"} - ${formData.firstName} ${formData.lastName}`.trim();
+    const emailBody = [
+      `Name: ${formData.firstName} ${formData.lastName}`.trim(),
+      `Email: ${formData.email}`,
+      `Phone: ${formData.phone || "Not provided"}`,
+      `Service: ${formData.subject}`,
+      `Budget: ${formData.budget || "Not specified"}`,
+      "",
+      "Message:",
+      formData.message,
+    ].join("\n");
+
+    const mailtoUrl = `mailto:${submissionEmails.join(",")}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+    window.location.href = mailtoUrl;
 
     await new Promise((resolve) => window.setTimeout(resolve, 2000));
 
@@ -395,7 +411,11 @@ export default function Contact() {
           <div className="mt-7 space-y-3">
             {[
               { icon: MapPin, label: "Location", value: "Kampala, Uganda" },
-              { icon: Mail, label: "Email", value: "hello@slimcybertech.com" },
+              {
+                icon: Mail,
+                label: "Email",
+                value: "lemaaaron3@gmail.com / fahadirashidawongo@gmail.com",
+              },
               { icon: Phone, label: "Phone", value: "+256 700 000 000" },
             ].map((item, index) => (
               <motion.div
@@ -413,7 +433,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-[10px] uppercase tracking-[0.16em] text-[#7b7b7b]">{item.label}</p>
-                    <p className="text-sm text-[var(--white)]">{item.value}</p>
+                    <p className="break-all text-sm text-[var(--white)]">{item.value}</p>
                   </div>
                 </div>
               </motion.div>

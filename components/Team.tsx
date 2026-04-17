@@ -27,6 +27,13 @@ const team = [
     alt: "Akuma Dalil portrait",
     specialties: ["Infrastructure Support", "Systems Administration"],
   },
+  {
+    name: "Hussen Yang Salim",
+    role: "Graphic Designer",
+    image: "/images/Hussen Yang Salim.jpeg",
+    alt: "Hussen Yang Salim portrait",
+    specialties: ["Brand Identity", "Visual Design"],
+  },
 ];
 
 export default function Team() {
