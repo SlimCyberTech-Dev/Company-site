@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeUp, staggerContainer, staggerItem, VIEWPORT_ONCE } from "@/lib/motion";
 import {
   AppWindowMac,
   CloudCog,
+  Shield,
   ShieldCheck,
   Smartphone,
   Sparkles,
@@ -16,55 +16,46 @@ import {
 const services = [
   {
     title: "Software Development",
-    description: "Custom web and desktop apps",
+    description: "Custom web platforms engineered for speed, stability, and scale.",
+    highlights: ["Modern architecture", "API-first delivery", "Long-term maintainability"],
     icon: AppWindowMac,
-    image: "/images/Gemini_Generated_Image_ntfdvgntfdvgntfd.png",
   },
   {
     title: "Mobile Development",
-    description: "iOS and Android solutions",
+    description: "Cross-platform mobile products that feel native and perform smoothly.",
+    highlights: ["iOS & Android", "Optimized performance", "Release-ready QA"],
     icon: Smartphone,
-    image: "/images/Gemini_Generated_Image_f151z2f151z2f151.png",
   },
   {
     title: "Cybersecurity",
-    description: "Threat analysis and secure architecture",
+    description: "Security-first assessments and hardening to reduce risk across systems.",
+    highlights: ["Threat analysis", "Secure architecture", "Continuous protection"],
     icon: ShieldCheck,
-    image: "/images/Gemini_Generated_Image_d67n9jd67n9jd67n.png",
   },
   {
     title: "Cloud & DevOps",
-    description: "Scalable infrastructure",
+    description: "Reliable cloud infrastructure and delivery pipelines built for growth.",
+    highlights: ["Scalable cloud setup", "CI/CD automation", "Observability & uptime"],
     icon: CloudCog,
-    image: "/images/Gemini_Generated_Image_10opsg10opsg10op.png",
   },
   {
     title: "UI/UX Design",
-    description: "User-first interface design",
+    description: "Human-centered interface systems designed for conversion and clarity.",
+    highlights: ["User flows", "Design systems", "Accessibility-first thinking"],
     icon: Sparkles,
-    image: "/images/Gemini_Generated_Image_fbrzw4fbrzw4fbrz (1).png",
   },
   {
     title: "Tech Consulting",
-    description: "Strategy and digital transformation",
+    description: "Practical technical strategy to accelerate digital transformation.",
+    highlights: ["Architecture guidance", "Execution roadmap", "Team enablement"],
     icon: Waypoints,
-    image: "/images/Gemini_Generated_Image_teo7vpteo7vpteo7.png",
   },
 ];
 
 export default function Services() {
   return (
     <section id="services" className="relative mx-auto mt-10 w-full max-w-6xl px-4 sm:px-6 md:mt-12 md:px-10">
-      <div className="absolute inset-0 -z-20 overflow-hidden rounded-2xl">
-        <Image
-          src="/images/Gemini_Generated_Image_8alwwn8alwwn8alw.png"
-          alt="Digital service network background"
-          fill
-          loading="lazy"
-          className="object-cover opacity-20"
-        />
-      </div>
-      <div className="absolute inset-0 -z-10 rounded-2xl bg-black/55" />
+      <div className="pointer-events-none absolute inset-0 -z-10 rounded-3xl bg-[radial-gradient(circle_at_20%_25%,rgba(0,198,255,0.08),transparent_45%),radial-gradient(circle_at_80%_75%,rgba(0,114,255,0.07),transparent_50%)]" />
 
       <motion.div
         className="mb-8 text-center sm:mb-10"
@@ -92,16 +83,9 @@ export default function Services() {
             key={service.title}
             variants={staggerItem}
             custom={index}
-            className="group relative min-h-[230px] overflow-hidden rounded-2xl border border-[#222] bg-[#111] p-5 sm:min-h-[250px] sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--cyan)]/70 hover:shadow-[0_16px_40px_-20px_rgba(0,198,255,0.55)]"
+            className="group relative overflow-hidden rounded-2xl border border-[#222] bg-[#0f1115] p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--cyan)]/65 hover:shadow-[0_16px_40px_-24px_rgba(0,198,255,0.35)]"
           >
-            <Image
-              src={service.image}
-              alt={`${service.title} service visual`}
-              fill
-              loading="lazy"
-              className="object-cover opacity-20 transition-transform duration-500 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-black/60" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.02),transparent_40%)]" />
             <div className="absolute left-0 top-0 h-[2px] w-full origin-left scale-x-0 bg-[var(--gradient)] transition-transform duration-300 group-hover:scale-x-100" />
 
             <div className="relative z-10 mb-5 inline-flex rounded-xl border border-[var(--border)] bg-[var(--surface2)] p-3">
@@ -128,7 +112,18 @@ export default function Services() {
             <h3 className="relative z-10 font-heading text-xl leading-snug text-[var(--white)]">
               {service.title}
             </h3>
-            <p className="relative z-10 mt-3 text-sm leading-7 text-[var(--muted)]">{service.description}</p>
+            <p className="relative z-10 mt-3 text-sm leading-7 text-[var(--muted)]">
+              {service.description}
+            </p>
+
+            <ul className="relative z-10 mt-4 space-y-2">
+              {service.highlights.map((point) => (
+                <li key={`${service.title}-${point}`} className="flex items-start gap-2 text-xs text-[var(--white)]/85">
+                  <Shield className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[var(--cyan)]" />
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
 
             <Link
               href="#contact"

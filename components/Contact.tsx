@@ -264,7 +264,7 @@ export default function Contact() {
     const hasValue = formData[field].trim().length > 0;
     const isFocused = focusedField === field;
     const hasError = Boolean(errors[field]);
-    const showFloating = isFocused || hasValue;
+    const showFloating = isSelect || isFocused || hasValue;
 
     const borderClass = hasError ? "border-[#ef4444]" : "border-[#222]";
     const focusClass = hasError
@@ -291,7 +291,7 @@ export default function Contact() {
                 onChange={(event) => updateField(field, event.target.value)}
                 onFocus={() => setFocusedField(field)}
                 onBlur={() => handleBlur(field)}
-                className={`${fieldBaseClasses} appearance-none pr-10 ${borderClass} ${focusClass}`}
+                className={`${fieldBaseClasses} appearance-none pt-5 pr-10 ${borderClass} ${focusClass}`}
               >
                 {options.map((option, index) => (
                   <option
