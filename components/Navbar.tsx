@@ -49,16 +49,26 @@ export default function Navbar() {
             : "border-b border-transparent bg-transparent"
         }`}
       >
-        <nav className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-10">
-          <Link href="#home" className="group flex items-center gap-2">
+        <nav className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-3 sm:px-6 lg:px-10">
+          <Link href="#home" className="group flex min-w-0 items-center gap-2 sm:gap-3">
             <Image
               src="/images/Logo.jpeg"
               alt="SlimCyberTech logo"
-              width={132}
-              height={38}
+              width={44}
+              height={44}
               priority
-              className="h-9 w-auto object-contain"
+              className="h-9 w-9 rounded-md object-cover sm:h-10 sm:w-10"
             />
+            <div className="min-w-0">
+              <p className="truncate font-heading text-sm leading-tight sm:text-base">
+                <span className="text-[var(--white)]">Slim</span>
+                <span className="text-[var(--cyan)]">Cyber</span>
+                <span className="text-[var(--white)]">Tech</span>
+              </p>
+              <p className="truncate font-heading text-[9px] uppercase tracking-[0.16em] text-[var(--muted)] sm:text-[10px]">
+                Building the future with code
+              </p>
+            </div>
           </Link>
 
           <div className="hidden items-center gap-8 md:flex">
