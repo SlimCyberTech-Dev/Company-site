@@ -238,7 +238,7 @@ export default function Testimonials() {
               className="relative overflow-hidden rounded-2xl border border-[#222] bg-[#111] p-6 md:p-8"
             >
               <p className="pointer-events-none absolute left-4 top-2 font-heading text-8xl text-transparent opacity-30 [background:var(--gradient)] [background-clip:text] md:text-9xl">
-                "
+                &quot;
               </p>
 
               <div className="relative z-10">
