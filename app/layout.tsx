@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   title: "SlimCyberTech | Software Development & Technology",
   description:
-    "SlimCyberTech delivers software development, technology consulting, cybersecurity, and web/mobile app solutions for modern businesses.",
+    "SlimCyberTech the leading software company in West Nile delivers software development, technology consulting, cybersecurity, and web/mobile app solutions for modern businesses.",
   keywords: [
     "SlimCyberTech",
     "software development",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     "cybersecurity",
     "web development",
     "mobile apps",
-    "Kampala software company",
+    "West Nile software company",
   ],
   openGraph: {
     title: "SlimCyberTech | Software Development & Technology",

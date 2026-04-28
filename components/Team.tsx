@@ -23,6 +23,13 @@ const team = [
     specialties: ["Backend Systems", "Web Applications"],
   },
   {
+    name: "Uhuru Diana",
+    role: "Senior Software Engineer",
+    image: "/images/Diana.jpg",
+    alt: "Uhuru Diana portrait",
+    specialties: ["Front-end Developer", "Web Applications"],
+  },
+  {
     name: "Akuma Dalil",
     role: "IT Operations & Support Specialist",
     image: "/images/Akuma Dalil.jpeg",

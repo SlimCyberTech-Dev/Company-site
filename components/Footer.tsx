@@ -80,7 +80,7 @@ export default function Footer() {
             <ul className="mt-4 space-y-2 text-sm text-[var(--muted)]">
               <li>hello@slimcybertech.com</li>
               <li>+256 772 581510</li>
-              <li>Kampala, Uganda</li>
+              <li>WestNile, Uganda</li>
             </ul>
 
             <div className="mt-5 flex items-center gap-3">

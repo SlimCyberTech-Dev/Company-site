@@ -54,15 +54,15 @@ const subjects = [
 
 const budgets = [
   "Select Budget Range...",
-  "Under $1,000",
-  "$1,000 - $5,000",
-  "$5,000 - $20,000",
-  "$20,000+",
+  "Under UGX 250,000",
+  "UGX 250,000 - UGX 550,000",
+  "UGX 550,000 - UGX 750,000",
+  "UGX 1000,000+",
   "Let's Discuss",
 ];
 
 const requiredFields: FieldName[] = ["firstName", "lastName", "email", "subject", "message"];
-const submissionEmails = ["lemaaaron3@gmail.com", "fahadirashidawongo@gmail.com"];
+const submissionEmails = ["lemaaaron3@gmail.com",];
 
 const fieldIcons: Record<FieldName, React.ComponentType<{ className?: string }>> = {
   firstName: User,
@@ -413,13 +413,13 @@ export default function Contact() {
 
           <div className="mt-7 space-y-3">
             {[
-              { icon: MapPin, label: "Location", value: "Kampala, Uganda" },
+              { icon: MapPin, label: "Location", value: "Arua, West Nile" },
               {
                 icon: Mail,
                 label: "Email",
-                value: "lemaaaron3@gmail.com / fahadirashidawongo@gmail.com",
+                value: "lemaaaron3@gmail.com",
               },
-              { icon: Phone, label: "Phone", value: "+256 700 000 000" },
+              { icon: Phone, label: "Phone", value: "+256 772 581510" },
             ].map((item, index) => (
               <motion.div
                 key={item.label}
