@@ -62,7 +62,6 @@ const budgets = [
 ];
 
 const requiredFields: FieldName[] = ["firstName", "lastName", "email", "subject", "message"];
-const submissionEmails = ["lemaaaron3@gmail.com",];
 
 const fieldIcons: Record<FieldName, React.ComponentType<{ className?: string }>> = {
   firstName: User,
@@ -110,6 +109,7 @@ export default function Contact() {
   const [completionPercent, setCompletionPercent] = useState(0);
   const [isTypingMessage, setIsTypingMessage] = useState(false);
   const [isShaking, setIsShaking] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const typingTimeout = useRef<number | null>(null);
   const resetTimeout = useRef<number | null>(null);
@@ -183,6 +183,7 @@ export default function Contact() {
   const handleSubmit = async () => {
     const newErrors = validateAll();
     setErrors(newErrors);
+    setSubmitError(null);
 
     if (Object.keys(newErrors).length > 0) {
       setIsShaking(true);
@@ -193,48 +194,50 @@ export default function Contact() {
     setIsSubmitting(true);
     setIsSuccess(false);
 
-    const emailSubject = `${formData.subject || "Website Inquiry"} - ${formData.firstName} ${formData.lastName}`.trim();
-    const emailBody = [
-      `Name: ${formData.firstName} ${formData.lastName}`.trim(),
-      `Email: ${formData.email}`,
-      `Phone: ${formData.phone || "Not provided"}`,
-      `Service: ${formData.subject}`,
-      `Budget: ${formData.budget || "Not specified"}`,
-      "",
-      "Message:",
-      formData.message,
-    ].join("\n");
-
-    const mailtoUrl = `mailto:${submissionEmails.join(",")}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
-    window.location.href = mailtoUrl;
-
-    await new Promise((resolve) => window.setTimeout(resolve, 2000));
-
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    setShowToast(true);
-
-    if (resetTimeout.current) window.clearTimeout(resetTimeout.current);
-    if (toastTimeout.current) window.clearTimeout(toastTimeout.current);
-
-    resetTimeout.current = window.setTimeout(() => {
-      setIsSuccess(false);
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        subject: "",
-        budget: "",
-        message: "",
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       });
-      setCharCount(0);
-      setErrors({});
-    }, 3000);
 
-    toastTimeout.current = window.setTimeout(() => {
-      setShowToast(false);
-    }, 4000);
+      const payload = (await response.json().catch(() => null)) as { error?: string } | null;
+
+      if (!response.ok) {
+        throw new Error(payload?.error || "Unable to send your message right now.");
+      }
+
+      setIsSuccess(true);
+      setShowToast(true);
+
+      if (resetTimeout.current) window.clearTimeout(resetTimeout.current);
+      if (toastTimeout.current) window.clearTimeout(toastTimeout.current);
+
+      resetTimeout.current = window.setTimeout(() => {
+        setIsSuccess(false);
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          subject: "",
+          budget: "",
+          message: "",
+        });
+        setCharCount(0);
+        setErrors({});
+      }, 3000);
+
+      toastTimeout.current = window.setTimeout(() => {
+        setShowToast(false);
+      }, 4000);
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : "Unable to send your message right now.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   useEffect(() => {
@@ -576,6 +579,8 @@ export default function Contact() {
                   </span>
                 )}
               </motion.button>
+
+              {submitError && <p className="text-sm text-red-400">{submitError}</p>}
             </div>
           </div>
         </motion.div>
