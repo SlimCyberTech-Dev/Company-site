@@ -24,7 +24,7 @@ const team = [
   },
   {
     name: "Uhuru Diana",
-    role: "Senior Software Engineer",
+    role: "Senior Front-end Developer",
     image: "/images/Diana.jpg",
     alt: "Uhuru Diana portrait",
     specialties: ["Front-end Developer", "Web Applications"],
@@ -48,6 +48,7 @@ const team = [
 export default function Team() {
   const trackRef = useRef<HTMLDivElement | null>(null);
   const [isPaused, setIsPaused] = useState(false);
+  const marqueeTeam = [...team, ...team];
 
   useEffect(() => {
     const track = trackRef.current;
@@ -63,9 +64,9 @@ export default function Team() {
 
       // Native scroll-based marquee that still allows manual swipe/scroll.
       track.scrollLeft += 0.35;
-      const maxScrollLeft = track.scrollWidth - track.clientWidth;
-      if (maxScrollLeft > 0 && track.scrollLeft >= maxScrollLeft) {
-        track.scrollLeft = 0;
+      const loopPoint = track.scrollWidth / 2;
+      if (loopPoint > 0 && track.scrollLeft >= loopPoint) {
+        track.scrollLeft -= loopPoint;
       }
 
       rafId = requestAnimationFrame(step);
@@ -155,10 +156,10 @@ export default function Team() {
         onPointerDown={() => setIsPaused(true)}
         onPointerUp={() => setIsPaused(false)}
       >
-        <div className="flex w-max snap-x snap-mandatory gap-4 pb-1 sm:gap-5">
-          {team.map((member, index) => (
+        <div className="flex w-max gap-4 pb-1 sm:gap-5">
+          {marqueeTeam.map((member, index) => (
             <div
-              key={member.name}
+              key={`${member.name}-${index}`}
               className="w-[86vw] max-w-[300px] shrink-0 snap-start sm:w-[320px] lg:w-[340px]"
             >
               {renderMemberCard(member, index, member.name)}
