@@ -105,6 +105,7 @@ export default function JsonLd() {
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "Custom Software Development" } },
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "Mobile App Development" } },
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "Cybersecurity Consulting" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Data Analysis" } },
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "Cloud & DevOps Engineering" } },
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "UI/UX Design" } },
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "Technology Consulting" } },

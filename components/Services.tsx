@@ -6,6 +6,7 @@ import { fadeUp, staggerItem, VIEWPORT_ONCE } from "@/lib/motion";
 import { useEffect, useRef, useState } from "react";
 import {
   AppWindowMac,
+  BarChart3,
   CloudCog,
   Shield,
   ShieldCheck,
@@ -35,6 +36,13 @@ const services = [
     description: "Security-first assessments and hardening to reduce risk across systems.",
     highlights: ["Threat analysis", "Secure architecture", "Continuous protection"],
     icon: ShieldCheck,
+  },
+  {
+    title: "Data Analysis",
+    category: "Analytics",
+    description: "Data analysis and reporting pipelines that turn raw data into useful decisions.",
+    highlights: ["Dashboard insights", "KPI tracking", "Business intelligence"],
+    icon: BarChart3,
   },
   {
     title: "Cloud & DevOps",

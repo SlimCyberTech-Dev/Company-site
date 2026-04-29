@@ -46,6 +46,7 @@ const subjects = [
   "Software Development",
   "Mobile App Development",
   "Cybersecurity",
+  "Data Analysis",
   "Cloud & DevOps",
   "UI/UX Design",
   "Tech Consulting",

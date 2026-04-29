@@ -15,7 +15,13 @@ const servicesLinks = [
   { label: "Software Development", href: "#services" },
   { label: "Mobile Development", href: "#services" },
   { label: "Cybersecurity", href: "#services" },
+  { label: "Data Analysis", href: "#services" },
   { label: "Tech Consulting", href: "#services" },
+];
+
+const managedWebsites = [
+  { label: "giftfoundationarua.org", href: "https://giftfoundationarua.org" },
+  { label: "aringass.com", href: "https://aringass.com" },
 ];
 
 const socialLinks = [
@@ -48,7 +54,7 @@ export default function Footer() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-6 sm:gap-8 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <h4 className="font-heading text-lg text-[var(--white)]">Quick Links</h4>
             <ul className="mt-4 space-y-2 text-sm text-[var(--muted)]">
@@ -75,7 +81,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="col-span-2 lg:col-span-1">
+          <div>
             <h4 className="font-heading text-lg text-[var(--white)]">Contact Info</h4>
             <ul className="mt-4 space-y-2 text-sm text-[var(--muted)]">
               <li>hello@slimcybertech.com</li>
@@ -97,6 +103,24 @@ export default function Footer() {
                 </Link>
               ))}
             </div>
+          </div>
+
+          <div>
+            <h4 className="font-heading text-lg text-[var(--white)]">Managed Websites</h4>
+            <ul className="mt-4 space-y-2 text-sm text-[var(--muted)]">
+              {managedWebsites.map((site) => (
+                <li key={site.href}>
+                  <Link
+                    href={site.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-[var(--cyan)]"
+                  >
+                    {site.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
