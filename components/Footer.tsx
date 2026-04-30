@@ -85,6 +85,7 @@ export default function Footer() {
             <h4 className="font-heading text-lg text-[var(--white)]">Contact Info</h4>
             <ul className="mt-4 space-y-2 text-sm text-[var(--muted)]">
               <li>hello@slimcybertech.com</li>
+              <li>info@slimcybertech.com</li>
               <li>+256 772 581510</li>
               <li>WestNile, Uganda</li>
             </ul>

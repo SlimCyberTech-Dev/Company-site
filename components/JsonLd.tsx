@@ -20,12 +20,20 @@ export default function JsonLd() {
       addressLocality: "Kampala",
       addressCountry: "UG",
     },
-    contactPoint: {
-      "@type": "ContactPoint",
-      contactType: "customer support",
-      email: "hello@slimcybertech.com",
-      availableLanguage: ["English"],
-    },
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        contactType: "customer support",
+        email: "hello@slimcybertech.com",
+        availableLanguage: ["English"],
+      },
+      {
+        "@type": "ContactPoint",
+        contactType: "customer support",
+        email: "info@slimcybertech.com",
+        availableLanguage: ["English"],
+      },
+    ],
     sameAs: [
       "https://twitter.com/slimcybertech",
       "https://linkedin.com/company/slimcybertech",
@@ -61,7 +69,7 @@ export default function JsonLd() {
     image: "https://slimcybertech.com/og-image.png",
     url: "https://slimcybertech.com",
     telephone: "+256700000000",
-    email: "hello@slimcybertech.com",
+    email: "info@slimcybertech.com",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Kampala",

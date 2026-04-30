@@ -297,7 +297,7 @@ export default function Navbar() {
                           onClick={(event) => handleDelayedAnchorTap(event, item.href, 350)}
                           className={`flex min-h-16 items-center justify-between rounded-xl border px-4 py-3.5 text-base font-medium transition-colors active:scale-[0.98] landscape:text-sm ${
                             isActive
-                              ? "border-[var(--cyan)]/55 bg-[var(--cyan)]/12 text-[var(--white)]"
+                              ? "border-[var(--mobile-active-border)] bg-[var(--mobile-active-bg)] text-[var(--white)]"
                               : "border-[var(--border)] bg-[var(--surface)] text-[var(--white)]/90 hover:border-[var(--cyan)]/45 hover:text-[var(--white)]"
                           }`}
                         >
@@ -335,6 +335,12 @@ export default function Navbar() {
                     className="block truncate text-sm font-medium text-[var(--cyan)] hover:text-[var(--white)]"
                   >
                     hello@slimcybertech.com
+                  </a>
+                  <a
+                    href="mailto:info@slimcybertech.com"
+                    className="mt-1 block truncate text-sm font-medium text-[var(--cyan)] hover:text-[var(--white)]"
+                  >
+                    info@slimcybertech.com
                   </a>
                   <a
                     href="tel:+256772581510"

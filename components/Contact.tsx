@@ -422,7 +422,7 @@ export default function Contact() {
               {
                 icon: Mail,
                 label: "Email",
-                value: "lemaaaron3@gmail.com",
+                value: "hello@slimcybertech.com / info@slimcybertech.com",
               },
               { icon: Phone, label: "Phone", value: "+256 772 581510" },
             ].map((item, index) => (
