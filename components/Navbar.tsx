@@ -123,7 +123,7 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-[60] transition-all duration-300 ${
+        className={`fixed inset-x-0 top-0 z-[60] pt-[env(safe-area-inset-top)] transition-all duration-300 ${
           isScrolled
             ? "border-b border-[var(--cyan)]/55 bg-[var(--header-bg)] backdrop-blur-md"
             : "border-b border-transparent bg-transparent"
@@ -131,25 +131,25 @@ export default function Navbar() {
       >
         <nav
           aria-label="Main navigation"
-          className="mx-auto flex h-18 w-full max-w-7xl items-center justify-between px-3 sm:h-20 sm:px-6 lg:px-10"
+          className="mx-auto flex min-h-[4.25rem] w-full max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:min-h-[5rem] sm:px-6 sm:py-0 lg:px-10"
         >
-          <Link href="#hero" className="group flex min-w-0 items-center gap-2">
+          <Link href="#hero" className="group flex min-w-0 flex-1 items-center gap-2.5 sm:flex-initial sm:gap-3">
             <Image
               src="/images/Logo.jpeg"
               alt="SlimCyberTech logo"
-              width={42}
-              height={42}
+              width={48}
+              height={48}
               priority
-              className="h-8 w-8 rounded-md object-cover sm:h-10 sm:w-10"
+              className="h-10 w-10 shrink-0 rounded-lg object-cover sm:h-11 sm:w-11 md:h-10 md:w-10"
             />
-            <span className="max-w-[130px] whitespace-nowrap leading-none sm:max-w-none">
-              <span className="text-sm font-semibold tracking-[0.01em] text-[var(--white)] sm:text-lg">
+            <span className="min-w-0 leading-tight sm:whitespace-nowrap">
+              <span className="text-base font-semibold tracking-[0.02em] text-[var(--white)] sm:text-lg">
                 Slim
               </span>
-              <span className="text-sm font-semibold tracking-[0.01em] text-[var(--cyan)] sm:text-lg">
+              <span className="text-base font-semibold tracking-[0.02em] text-[var(--cyan)] sm:text-lg">
                 Cyber
               </span>
-              <span className="text-sm font-semibold tracking-[0.01em] text-[var(--blue)] sm:text-lg">
+              <span className="text-base font-semibold tracking-[0.02em] text-[var(--blue)] sm:text-lg">
                 Tech
               </span>
             </span>
@@ -200,22 +200,22 @@ export default function Navbar() {
             </Link>
           </div>
 
-          <div className="flex items-center gap-2 md:hidden">
+          <div className="flex shrink-0 items-center gap-2 md:hidden">
             <button
               type="button"
               aria-label="Toggle theme"
               onClick={toggleTheme}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface)] text-[var(--white)]"
+              className="inline-flex h-11 min-h-[44px] w-11 min-w-[44px] items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface)] text-[var(--white)] active:scale-[0.97]"
             >
-              {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </button>
             <button
               type="button"
               aria-label={isOpen ? "Close menu" : "Open menu"}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface)] text-[var(--white)]"
+              className="inline-flex h-11 min-h-[44px] w-11 min-w-[44px] items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface)] text-[var(--white)] active:scale-[0.97]"
               onClick={() => setIsOpen((prev) => !prev)}
             >
-              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </nav>
@@ -257,14 +257,14 @@ export default function Navbar() {
                   <Image
                     src="/images/Logo.jpeg"
                     alt="SlimCyberTech logo"
-                    width={36}
-                    height={36}
-                    className="h-9 w-9 rounded-md object-cover"
+                    width={44}
+                    height={44}
+                    className="h-11 w-11 rounded-lg object-cover"
                   />
-                  <span className="max-w-[150px] whitespace-nowrap leading-none">
-                    <span className="text-sm font-semibold tracking-[0.01em] text-[var(--white)]">Slim</span>
-                    <span className="text-sm font-semibold tracking-[0.01em] text-[var(--cyan)]">Cyber</span>
-                    <span className="text-sm font-semibold tracking-[0.01em] text-[var(--blue)]">Tech</span>
+                  <span className="min-w-0 leading-tight">
+                    <span className="text-base font-semibold tracking-[0.02em] text-[var(--white)]">Slim</span>
+                    <span className="text-base font-semibold tracking-[0.02em] text-[var(--cyan)]">Cyber</span>
+                    <span className="text-base font-semibold tracking-[0.02em] text-[var(--blue)]">Tech</span>
                   </span>
                 </Link>
                 <button
@@ -331,14 +331,8 @@ export default function Navbar() {
                 <div className="rounded-xl border border-[#1e1e1e] bg-[#111] p-4">
                   <p className="mb-1 text-xs uppercase tracking-wider text-[var(--white)]/55">Quick Contact</p>
                   <a
-                    href="mailto:hello@slimcybertech.com"
-                    className="block truncate text-sm font-medium text-[var(--cyan)] hover:text-[var(--white)]"
-                  >
-                    hello@slimcybertech.com
-                  </a>
-                  <a
                     href="mailto:info@slimcybertech.com"
-                    className="mt-1 block truncate text-sm font-medium text-[var(--cyan)] hover:text-[var(--white)]"
+                    className="block truncate text-sm font-medium text-[var(--cyan)] hover:text-[var(--white)]"
                   >
                     info@slimcybertech.com
                   </a>

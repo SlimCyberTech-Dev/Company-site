@@ -1,39 +1,21 @@
 import type { MetadataRoute } from "next";
 
+/** Fully static so crawlers always get plain XML from the build (no runtime surprises). */
+export const dynamic = "force-static";
+
+const baseUrl = "https://slimcybertech.com";
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://slimcybertech.com";
   const lastModified = new Date();
 
+  // Single-page site: one canonical URL. Fragment URLs (#section) are not separate pages in
+  // Google's index and can confuse sitemap parsers; in-page anchors are still crawlable from HTML.
   return [
     {
       url: baseUrl,
       lastModified,
       changeFrequency: "weekly",
-      priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/#services`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/#about`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/#portfolio`,
-      lastModified,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/#contact`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.9,
+      priority: 1,
     },
   ];
 }

@@ -24,12 +24,6 @@ export default function JsonLd() {
       {
         "@type": "ContactPoint",
         contactType: "customer support",
-        email: "hello@slimcybertech.com",
-        availableLanguage: ["English"],
-      },
-      {
-        "@type": "ContactPoint",
-        contactType: "customer support",
         email: "info@slimcybertech.com",
         availableLanguage: ["English"],
       },
