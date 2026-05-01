@@ -13,7 +13,14 @@ const team = [
     role: "Software Engineer",
     image: "/images/Lema.jpeg",
     alt: "Lema Aaron portrait",
-    specialties: ["Leadership", "Software Engineering"],
+    specialties: ["Leadership", "Software Engineer"],
+  },
+  {
+    name: "Sebabe Swaleh",
+    role: "Senior Software Engineer",
+    image: "/images/Sebabe.jpg",
+    alt: "Sebabe Swaleh",
+    specialties: ["Backend Systems", "Web Applications"],
   },
   {
     name: "Awongo Fahadi Rashid",
@@ -28,6 +35,13 @@ const team = [
     image: "/images/Diana.jpg",
     alt: "Uhuru Diana portrait",
     specialties: ["Front-end Developer", "Web Applications"],
+  },
+  {
+    name: "Aguta Kennedy",
+    role: "Web Developer, Graphic Designer",
+    image: "/images/Keno.jpeg",
+    alt: "Aguta Kennedy ",
+    specialties: ["Web Developer", "Graphics Designer"],
   },
   {
     name: "Akuma Dalil",
