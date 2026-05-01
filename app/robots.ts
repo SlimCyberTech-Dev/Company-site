@@ -8,7 +8,9 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/_next/", "/static/"],
+        // Do not disallow /_next/: it blocks `/_next/image` and `/_next/static/*`, which breaks
+        // Google’s resource checks and can interfere with rendering. `/api/` stays disallowed.
+        disallow: ["/api/"],
       },
     ],
     sitemap: "https://slimcybertech.com/sitemap.xml",
