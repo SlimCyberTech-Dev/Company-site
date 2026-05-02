@@ -7,7 +7,17 @@ import { ArrowUpRight, BriefcaseBusiness } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { fadeUp, staggerItem, VIEWPORT_ONCE } from "@/lib/motion";
 
-const team = [
+type TeamMember = {
+  name: string;
+  role: string;
+  image: string;
+  alt: string;
+  specialties: string[];
+  /** Tailwind object-* position when using object-cover (e.g. object-top for tall portraits). */
+  imagePosition?: string;
+};
+
+const team: TeamMember[] = [
   {
     name: "Lema Aaron",
     role: "Software Engineer",
@@ -42,6 +52,7 @@ const team = [
     image: "/images/Keno.jpeg",
     alt: "Aguta Kennedy ",
     specialties: ["Web Developer", "Graphics Designer"],
+    imagePosition: "object-top",
   },
   {
     name: "Akuma Dalil",
@@ -90,7 +101,7 @@ export default function Team() {
     return () => cancelAnimationFrame(rafId);
   }, [isPaused]);
 
-  const renderMemberCard = (member: (typeof team)[number], index: number, key: string) => (
+  const renderMemberCard = (member: TeamMember, index: number, key: string) => (
     <motion.article
       key={key}
       variants={staggerItem}
@@ -108,7 +119,7 @@ export default function Team() {
           alt={member.alt}
           fill
           loading="lazy"
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className={`object-cover transition-transform duration-500 group-hover:scale-105 ${member.imagePosition ?? ""}`}
         />
         <div
           className="absolute inset-0"
