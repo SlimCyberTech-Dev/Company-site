@@ -1,9 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowUpRight, BriefcaseBusiness } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { fadeUp, staggerItem, VIEWPORT_ONCE } from "@/lib/motion";
 
@@ -13,61 +11,96 @@ type TeamMember = {
   image: string;
   alt: string;
   specialties: string[];
+  bio: string;
+  email?: string;
+  whatsapp: string; 
   /** Tailwind object-* position when using object-cover (e.g. object-top for tall portraits). */
   imagePosition?: string;
 };
 
 const team: TeamMember[] = [
-  {
+{
     name: "Lema Aaron",
     role: "Software Engineer",
     image: "/images/Lema.jpeg",
     alt: "Lema Aaron portrait",
     specialties: ["Leadership", "Software Engineer"],
+    bio: `Technical Lead Developer at SlimCyberTech with expertise in software engineering, AI, machine learning, business process automation, web and mobile application development, networking, and enterprise systems architecture.`,
+    email: "info@slimcybertech.com",
+    whatsapp: "https://wa.me/256772581510",
   },
-  {
+   {
     name: "Sebabe Swaleh",
     role: "Senior Software Engineer",
     image: "/images/Sebabe.jpeg",
     alt: "Sebabe Swaleh",
     specialties: ["Backend Systems", "Web Applications"],
+    bio: `Software Engineering student at Makerere University with a strong interest in Data Science, AI, Machine Leraning,Mobile Application and Cloud computing.My expertise includes Flutter app developmemnt,Andriod development,full stack development and building innovative technology solutions that solve real world problems.`,
+    email: "swale.sebabeabdu@students.mak.ac.ug",
+    whatsapp: "https://wa.me/256778544744",
   },
-  {
+   {
     name: "Awongo Fahadi Rashid",
     role: "Senior Software Engineer",
     image: "/images/Awongo Fahadi Rashid.jpeg",
     alt: "Awongo Fahadi Rashid portrait",
     specialties: ["Backend Systems", "Web Applications"],
-  },
+    bio: `Software Engineering student at Makerere University working across the full stack, from intuitive interfaces to robust backend systems that solve meaningful problems.`,
+    email: "fahadirashidawongo@gmail.com",
+    whatsapp: "https://wa.me/256764922070",
+  }, 
   {
     name: "Uhuru Diana",
     role: "Senior Front-end Developer",
     image: "/images/Diana.jpg",
     alt: "Uhuru Diana portrait",
     specialties: ["Front-end Developer", "Web Applications"],
+    bio: `Information Technology student at Muni University with interests in front-end development, networking and software solutions.Passionate about learning and creating impactful digital experiences`,
+    email: "dianauhuru9@gmail.com",
+    whatsapp: "https://wa.me/256791906404",
   },
   {
     name: "Aguta Kennedy",
     role: "Web Developer, Graphic Designer",
     image: "/images/Keno.jpeg",
-    alt: "Aguta Kennedy ",
+    alt: "Aguta Kennedy",
     specialties: ["Web Developer", "Graphics Designer"],
+    bio: `Creative web developer and graphic designer dedicated to building engaging digital products that combine technical excellence with outstanding visual design.`,
+    whatsapp: "https://wa.me/256780814373",
     imagePosition: "object-top",
   },
-  {
+   {
     name: "Akuma Dalil",
     role: "IT Operations & Support Specialist",
     image: "/images/Akuma Dalil.jpg",
     alt: "Akuma Dalil portrait",
     specialties: ["Infrastructure Support", "Systems Administration"],
+    bio: `Dedicated IT Operations and Support Specialist passionate about delivering reliable technology solutions, strong technical support, and excellent customer satisfaction.`,
+    email: "akumadalil1@gmail.com",
+    whatsapp: "https://wa.me/256762099651",
   },
-  {
+   {
     name: "Hussen Yang Salim",
     role: "Graphic Designer",
     image: "/images/Hussen Yang Salim.jpeg",
     alt: "Hussen Yang Salim portrait",
     specialties: ["Brand Identity", "Visual Design"],
+    bio: `Creative graphic designer specializing in brand identity, visual communication, and impactful designs that help businesses stand out.`,
+    email: "husseinyangs@gmail.com",
+    whatsapp: "https://wa.me/256787322539",
+   },
+    {
+    name: "Ogole Fadil Hussen",
+    role: "Full Stack Developer & IT Operations Specialist",
+    image: "/images/fadil.jpg",
+    alt: "Ogole Fadil Hussen",
+    specialties: ["Full Stack Developer" , "IT Operations Specialist"],
+    bio: `Full Stack Developer & IT Operations Specialist focused on creating seamless digital experiences and optimizing IT infrastructure. Dedicated to solving complex problems through technology and innovation.`,
+    email: "ogolefadilhussen@outlook.com",
+    whatsapp: "https://wa.me/256789416409",
+    imagePosition: "object-top",
   },
+
 ];
 
 export default function Team() {
@@ -133,6 +166,7 @@ export default function Team() {
       <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
         <p className="font-heading text-lg leading-tight text-white sm:text-xl">{member.name}</p>
         <p className="mt-1 text-xs text-white/85 sm:text-sm">{member.role}</p>
+      <p className="mt-2 line-clamp-3 text-xs text-white/85">{member.bio}</p>
         <div className="mt-3 flex flex-wrap gap-2">
           {member.specialties.map((specialty) => (
             <span
@@ -143,19 +177,26 @@ export default function Team() {
             </span>
           ))}
         </div>
-        <div className="mt-3">
-          <Link
-            href="#contact"
-            className="inline-flex items-center gap-2 text-xs font-medium text-[var(--cyan)] transition-colors duration-300 hover:text-white sm:text-sm"
-            aria-label={`Contact ${member.name}`}
-          >
-            <BriefcaseBusiness className="h-4 w-4" />
-            Work With {member.name.split(" ")[0]}
-            <ArrowUpRight className="h-3.5 w-3.5" />
-          </Link>
-        </div>
-      </div>
-    </motion.article>
+    <div className="mt-4 flex flex-wrap gap-2">
+  <a
+    href={`mailto:${member.email}`}
+    className="rounded-full border border-[var(--cyan)]/40 px-3 py-1 text-xs text-white hover:border-[var(--cyan)]"
+  >
+    Email
+  </a>
+
+  <a
+    href={member.whatsapp}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="rounded-full border border-[var(--cyan)]/40 px-3 py-1 text-xs text-white hover:border-[var(--cyan)]"
+  >
+    WhatsApp
+  </a>
+</div>
+
+</div>
+</motion.article>
   );
 
   return (
